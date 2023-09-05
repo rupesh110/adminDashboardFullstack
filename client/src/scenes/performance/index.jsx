@@ -76,7 +76,8 @@ const Performance = () => {
           },
         }}
       >
-        <DataGrid
+        <Header title="Please note that this page is still a work in progress."/>
+        {/* <DataGrid
           loading={isLoading || !data}
           getRowId={(row) => row._id}
           rows={(data && data.sales) || []}
@@ -84,7 +85,7 @@ const Performance = () => {
           components={{
             ColumnMenu: CustomColumnMenu,
           }}
-        />
+        /> */}
       </Box>
     </Box>
   );

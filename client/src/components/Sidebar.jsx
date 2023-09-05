@@ -127,7 +127,7 @@ const Sidebar = ({
             },
           }}
         >
-          <Box width="100%">
+          <Box width="100%" flexGrow={1}>
             <Box m="1.5rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
@@ -193,7 +193,7 @@ const Sidebar = ({
             </List>
           </Box>
 
-          <Box position="relative" bottom="0rem">
+          <Box position="relative" bottom="1rem">
             <Divider />
             <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
               <Box

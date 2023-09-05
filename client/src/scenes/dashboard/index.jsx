@@ -73,7 +73,7 @@ const Dashboard = () => {
             }}
           >
             <DownloadOutlined sx={{ mr: "10px" }} />
-            Download Reports
+              Download Reports
           </Button>
         </Box>
       </FlexBetween>
