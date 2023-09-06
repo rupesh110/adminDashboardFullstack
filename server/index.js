@@ -44,6 +44,11 @@ app.use("/sales", salesRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client',  'index.html'));
+});
+
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
@@ -63,8 +68,6 @@ mongoose
     .catch((error) => console.log(`{error} did not connect`));
 
 // Add a catch-all route
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'path-to-your-index.html'));
-});
+
 
 export default app;
