@@ -10,8 +10,6 @@ import generalRoutes from './routes/general.js';
 import managementRoutes from './routes/management.js';
 import salesRoutes from './routes/sales.js';
 import OverallStat from './models/OverallStat.js';
-import { notFound, errorHandler } from './middleware/errorMidddleware.js';
-import connectDB from './config/db.js';
 import path from 'path'; // Import the path module
 
 //data imports
@@ -24,7 +22,7 @@ import { dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallSta
 
 /* CONFIGURATION */
 dotenv.config();
-connectDB();
+
 const app = express();
 app.use(express.json());
 app.use(helmet());
@@ -33,8 +31,7 @@ app.use(morgan('common'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-app.use(notFound);
-app.use(errorHandler);
+
 
 /* ROUTES */
 app.use("/client", clientRoutes);
