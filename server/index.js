@@ -43,8 +43,9 @@ app.use("/sales", salesRoutes);
 const PORT = process.env.PORT || 9000;
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client',  'index.html'));
-});
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  });
+  
 
 mongoose
     .connect(process.env.MONGO_URL, {
