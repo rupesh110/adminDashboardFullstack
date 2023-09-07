@@ -9,8 +9,18 @@ import clientRoutes from './routes/client.js';
 import generalRoutes from './routes/general.js';
 import managementRoutes from './routes/management.js';
 import salesRoutes from './routes/sales.js';
+import OverallStat from './models/OverallStat.js';
 import path from 'path'; // Import the path module
 
+//data imports
+import User from './models/User.js';
+import Product from './models/Product.js';
+import ProductStat from './models/ProductStat.js';
+import Transaction from './models/Transaction.js';
+import AffiliateStat  from './models/AffiliateStat.js';
+import { dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallStat, dataAffiliateStat  } from './data/index.js';
+
+/* CONFIGURATION */
 dotenv.config();
 
 const app = express();
@@ -22,39 +32,47 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-// Routes
+
+/* ROUTES */
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
 
+/* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
 
-// Static files
-app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Single catch-all route
+
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
+    console.error(err.stack);
     res.status(500).send('Something broke!');
 });
+  
 
-// Start the server and connect to MongoDB
-const startApp = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_URL, { 
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+mongoose
+    .connect(process.env.MONGO_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+    .then(() => {
         app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-    } catch (error) {
-        console.error(`${error} did not connect`);
-    }
-}
-startApp();
+
+        // /*ONLY ADDS DATA TO DB ONCE*/
+        // User.insertMany(dataUser);
+        // // Product.insertMany(dataProduct);
+        // ProductStat.insertMany(dataProductStat);
+        // Transaction.insertMany(dataTransaction);
+        // OverallStat.insertMany(dataOverallStat);
+        // AffiliateStat.insertMany(dataAffiliateStat);
+    })
+    .catch((error) => console.log(`{error} did not connect`));
+
+// Add a catch-all route
+
 
 export default app;
