@@ -19,6 +19,7 @@ import {
   HomeOutlined,
   ShoppingCartOutlined,
   Groups2Outlined,
+  Diversity3Outlined,
   ReceiptLongOutlined,
   PublicOutlined,
   PointOfSaleOutlined,
@@ -57,6 +58,10 @@ const navItems = [
   {
     text: "Geography",
     icon: <PublicOutlined />,
+  },
+  {
+    text: "Participants",
+    icon: <Diversity3Outlined />,
   },
   {
     text: "Sales",

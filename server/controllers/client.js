@@ -78,7 +78,7 @@ export const getTransactions = async (req, res) => {
   }
 };
 
-export const getGeography = async (req, res) => {
+export const getGeography = async (req, res) => {8
   try{
     const users = await User.find();
 
@@ -101,3 +101,45 @@ export const getGeography = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 }
+
+export const getParticipants = async (req, res) => {
+  try {
+    const { page = 1, pageSize = 20, sort = null, search="" } = req.query;
+
+    const generateSort = () => {
+      const sortParsed = JSON.parse(sort);
+      const sortFormatted = {
+        [sortParsed.field]: (sortParsed.sort === "asc" ? 1 : -1),
+      };
+
+      return sortFormatted;
+    };
+
+    const sortFormatted = Boolean(sort) ? generateSort() : {};
+
+    const searchQuery = search ? {
+      $or: [
+        { name: { $regex: search, $options: 'i' } },
+        { phoneNumber: { $regex: search, $options: 'i' } },
+        { email: { $regex: search, $options: 'i' } },
+      ],
+    } : {}
+
+    const participants = await User.find({
+      ...searchQuery,
+    })
+          .select("-password")
+          .sort(sortFormatted)
+          .skip(page * pageSize) // Corrected skip formula
+          .limit(Number(pageSize)); // Ensure pageSize is a number
+
+    const total = await User.countDocuments(searchQuery);
+
+    res.status(200).json({
+      participants,
+      total
+    });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
