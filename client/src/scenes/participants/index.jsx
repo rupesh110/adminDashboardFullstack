@@ -28,6 +28,7 @@ const Participants = () => {
         sort: JSON.stringify(sort),
         search
     });
+    console.log("🚀 ~ file: index.jsx:31 ~ Participants ~ data:", data)
 
    
   const columns = [
