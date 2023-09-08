@@ -10,6 +10,7 @@ const Performance = () => {
   const theme = useTheme();
   const userId = useSelector((state) => state.global.userId);
   const { data, isLoading } = useGetUserPerformanceQuery(userId);
+  console.log("🚀 ~ file: index.jsx:13 ~ Performance ~ data:", data)
 
   const columns = [
     {
@@ -76,7 +77,6 @@ const Performance = () => {
           },
         }}
       >
-        <Header title="Please note that this page is still a work in progress."/>
         <DataGrid
           loading={isLoading || !data}
           getRowId={(row) => row._id}
