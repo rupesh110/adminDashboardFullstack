@@ -16,6 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Change dir
+        run: cd server
+
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
