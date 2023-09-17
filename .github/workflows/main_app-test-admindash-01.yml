@@ -14,10 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Change dir
-        run: cd server
+      - uses: actions/checkout@v2/server
 
       - name: Set up Node.js version
         uses: actions/setup-node@v1
@@ -31,7 +28,7 @@ jobs:
           npm run test --if-present
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2/server
         with:
           name: node-app
           path: .
