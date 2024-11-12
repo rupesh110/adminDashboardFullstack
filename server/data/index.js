@@ -17623,13 +17623,13 @@ export const dataAffiliateStat = [
     },
     {
       _id: "63701cc1f03239867500011c",
-      name: "Wendel",
-      email: "wdutchburng@nationalgeographic.com",
+      name: "Rupesh",
+      email: "rupeshshrestha2537@gmail.com",
       password: "kmi0faeWBx1G",
       city: "Anáfi",
       state: null,
       country: "GR",
-      occupation: "Product Engineer",
+      occupation: "Software",
       phoneNumber: "9765815561",
       transactions: [
         "63701d74f032394441000319",
