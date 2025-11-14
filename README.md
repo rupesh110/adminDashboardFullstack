@@ -4,7 +4,7 @@ A full-stack administrative dashboard built using the **MERN stack (MongoDB, Exp
 
 ---
 
-## 🚀 Features
+## Features
 
 * Full-stack MERN architecture
 * Express server with modular routing
@@ -16,7 +16,7 @@ A full-stack administrative dashboard built using the **MERN stack (MongoDB, Exp
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend:** React, JavaScript, CSS
 
@@ -28,7 +28,7 @@ A full-stack administrative dashboard built using the **MERN stack (MongoDB, Exp
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 adminDashboardFullstack/
@@ -50,7 +50,7 @@ adminDashboardFullstack/
 
 ---
 
-## ▶️ Getting Started
+## Getting Started
 
 ### 1. Clone the repository
 
@@ -77,7 +77,7 @@ npm install
 
 ---
 
-## 🏃 Run the Project
+## Run the Project
 
 ### Start Backend
 
@@ -98,25 +98,8 @@ Backend will run on: **[http://localhost:5000](http://localhost:5000)**
 
 ---
 
-## 🌐 Deployment
+## Deployment
 
 This project is deployed on **Render** using separate services for the frontend and backend.
 
 ---
-
-## 📸 Screenshots *(Optional)*
-
-*Add UI screenshots here if available.*
-
----
-
-## 📄 License
-
-MIT License
-
----
-
-## 👨‍💻 Author
-
-**Rupesh Shrestha**
-GitHub: [https://github.com/rupesh110](https://github.com/rupesh110)
